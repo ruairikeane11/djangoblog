@@ -11,19 +11,8 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
+
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -31,5 +20,6 @@ def post_detail(request, slug):
     return render(
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {"post": post,
+         "coder": "Ruairi Keane"},
     )
